@@ -19,7 +19,10 @@ module.exports = {
                 ignoreUrls: true,
             },
         ],
-        'prettier/prettier': 'error',
+        'prettier/prettier': [
+            'error',
+            require('./.prettierrc'),
+        ],
         'one-var': 'off',
         'spaced-comment': 'off',
         'no-useless-escape': 'off', // TODO should probably be on, with our errors fixed
