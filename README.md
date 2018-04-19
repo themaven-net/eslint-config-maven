@@ -1,6 +1,6 @@
 # eslint-config-saymedia
 
-> Say Media's eslint config
+> Say Media's eslint / prettier config
 
 Goals:
 
@@ -8,6 +8,7 @@ Goals:
   * Minimize the transition friction for developers.
   * Leverage the ESLint power to reduce the number of bugs.
   * Progressively improve our code style.
+  * Provide a common set of options for code formatting applied by Prettier.
 
 Steps:
 
@@ -32,6 +33,12 @@ If you've installed `eslint-config-saymedia` locally within your project, just s
 {
   "extends": "saymedia"
 }
+```
+
+For using our Prettier defaults, you'll want to make a `.prettierrc.js` file with this:
+
+```js
+module.exports = require('eslint-config-saymedia/.prettierjs');
 ```
 
 ## Documentation
