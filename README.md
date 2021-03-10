@@ -1,4 +1,4 @@
-# eslint-config-saymedia
+# eslint-config-maven
 
 > Say Media's eslint / prettier config
 
@@ -19,33 +19,32 @@ Steps:
 
 ## Installation
 
-Install [eslint](https://eslint.org/) and `eslint-config-saymedia`:
+Install [eslint](https://eslint.org/) and `eslint-config-maven`:
 
 ```
-npm install --save-dev eslint saymedia/eslint-config-saymedia
+npm install --save-dev eslint themaven-net/eslint-config-maven
 ```
 
 ## Usage
 
-If you've installed `eslint-config-saymedia` locally within your project, just set your `eslint` config to:
+If you've installed `eslint-config-maven` locally within your project, just set your `eslint` config to:
 
 ```json
 {
-  "extends": "saymedia"
+  "extends": "maven"
 }
 ```
 
 For using our Prettier defaults, you'll want to make a `.prettierrc.js` file with this:
 
 ```js
-module.exports = require('eslint-config-saymedia/.prettierjs');
+module.exports = require('eslint-config-maven/.prettierjs');
 ```
 
 ## Documentation
 
 ### Extends
 
-* [eslint-config-standard](https://github.com/standard/eslint-config-standard): [JavaScript Standard Style](https://standardjs.com)
 * [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier): Turns off all rules that are unnecessary or might conflict with [Prettier](https://prettier.io/).
 
 ### Plugins
