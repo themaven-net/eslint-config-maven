@@ -1,14 +1,14 @@
 {
-  "name": "eslint-config-saymedia",
+  "name": "eslint-config-maven",
   "version": "1.0.0",
-  "description": "> Say Media's eslint config",
+  "description": "TheMaven's eslint config",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saymedia/eslint-config-saymedia.git"
+    "url": "git+https://github.com/themaven-net/eslint-config-maven.git"
   },
   "keywords": [
     "eslint",
@@ -17,20 +17,18 @@
   "author": "Say Media",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/saymedia/eslint-config-saymedia/issues"
+    "url": "https://github.com/themaven-net/eslint-config-maven/issues"
   },
-  "homepage": "https://github.com/saymedia/eslint-config-saymedia#readme",
+  "homepage": "https://github.com/themaven-net/eslint-config-maven#readme",
   "dependencies": {
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^4.0.0",
-    "prettier": "1.12.1"
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "prettier": "2.2.1"
   },
   "peerDependencies": {
-    "eslint": ">= 3"
+    "eslint": ">= 7"
   }
 }
