@@ -11,14 +11,6 @@ module.exports = {
         define: true,
     },
     rules: {
-        'max-len': [
-            'error',
-            {
-                code: 110,
-                ignoreStrings: true,
-                ignoreUrls: true,
-            },
-        ],
         'prettier/prettier': [
             'error',
             require('./.prettierrc'),
