@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "target": "es2020",
+        "lib": ["es2020"], /* For node14, overwrite for newer node version. Don't include dom definitions */
         "module": "commonjs",
         "strict": true,
         "noUnusedLocals": true,
