@@ -1,6 +1,5 @@
 module.exports = {
     "extends": [
-        "./index.js",
         // disable eslint rules that conflict with @typescript-eslint
         'plugin:@typescript-eslint/eslint-recommended',
         // new projects should consider enabling these plugins from the start

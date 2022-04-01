@@ -2,7 +2,13 @@
   "name": "eslint-config-maven",
   "version": "1.0.0",
   "description": "TheMaven's eslint config",
-  "main": "index.js",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./base-tsconfig.json": "./base-tsconfig.json",
+    "./.prettierrc": "./.prettierrc",
+    "./*": null
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
