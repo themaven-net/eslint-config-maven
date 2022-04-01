@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-maven",
+  "name": "@themaven-net/eslint-config-maven",
   "version": "1.0.0",
   "description": "TheMaven's eslint config",
   "main": "./index.js",

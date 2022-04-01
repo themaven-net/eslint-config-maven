@@ -1,4 +1,4 @@
-# eslint-config-maven
+# @themaven-net/eslint-config-maven
 
 > Say Media's eslint / prettier config
 
@@ -19,26 +19,36 @@ Steps:
 
 ## Installation
 
-Install [eslint](https://eslint.org/) and `eslint-config-maven`:
+First, [authenticate the GitHub npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry).
+To do this, navigate to GitHub → Settings → Developer settings → Personal access tokens.
+Click Generate new token. Add “repo” and “read:packages” permissions.
+Generate the token.
+In the terminal, set up `~/.npmrc` by running
+`npm login --scope=@themaven-net --registry=https://npm.pkg.github.com`,
+use your GitHub username as the username, and use the token as the password
+(warning: this deletes all the comments in `~/.npmrc`!).
+Back in the browser, click “Configure SSO → Authorize” to give the token access to Maven.
+
+Install [eslint](https://eslint.org/) and `@themaven-net/eslint-config-maven`:
 
 ```
-npm install --save-dev eslint themaven-net/eslint-config-maven
+npm install --save-dev eslint @themaven-net/eslint-config-maven
 ```
 
 ## Usage
 
-If you've installed `eslint-config-maven` locally within your project, just set your `eslint` config to:
+If you've installed `@themaven-net/eslint-config-maven` locally within your project, just set your `.eslintrc.js` config to:
 
 ```json
-{
-  "extends": "maven"
-}
+module.exports = {
+  extends: '@themaven-net/maven' // requires '@themaven-net/eslint-config-maven'
+};
 ```
 
 For using our Prettier defaults, you'll want to make a `.prettierrc.js` file with this:
 
 ```js
-module.exports = require('eslint-config-maven/.prettierjs');
+module.exports = require('@themaven-net/eslint-config-maven/.prettierjs');
 ```
 
 ## Documentation
