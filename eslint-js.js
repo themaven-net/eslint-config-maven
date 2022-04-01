@@ -19,10 +19,7 @@ module.exports = {
                 ignoreUrls: true,
             },
         ],
-        'prettier/prettier': [
-            'error',
-            require('./.prettierrc'),
-        ],
+        'prettier/prettier': ['error', require('./.prettierrc')],
 
         // enable a subset of eslint:recommended; consider enabling all of it
         // https://eslint.org/docs/rules/
@@ -58,4 +55,4 @@ module.exports = {
         'no-template-curly-in-string': 'off',
         yoda: 'off',
     },
-}
+};

@@ -1,5 +1,5 @@
 module.exports = {
-    "extends": [
+    extends: [
         // disable eslint rules that conflict with @typescript-eslint
         'plugin:@typescript-eslint/eslint-recommended',
         // new projects should consider enabling these plugins from the start
@@ -7,16 +7,16 @@ module.exports = {
         // 'plugin:@typescript-eslint/recommended',
         // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
     ],
-    "env": {
-        "node": true
+    env: {
+        node: true,
     },
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
-    "parserOptions": {
-        "ecmaVersion": 2020,
-        "project": ["./tsconfig.json"]
+    parser: '@typescript-eslint/parser',
+    plugins: ['@typescript-eslint'],
+    parserOptions: {
+        ecmaVersion: 2020,
+        project: ['./tsconfig.json'],
     },
-    "rules": {
+    rules: {
         // Disable opinionated rules from plugin:@typescript-eslint/eslint-recommend
         // https://github.com/typescript-eslint/typescript-eslint/blob/v5.15.0/packages/eslint-plugin/src/configs/eslint-recommended.ts
         'no-var': 'warn',
@@ -41,4 +41,4 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 'error',
         '@typescript-eslint/prefer-namespace-keyword': 'error',
     },
-}
+};
