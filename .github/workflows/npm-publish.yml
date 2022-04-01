@@ -1,0 +1,44 @@
+# This action publishes a package after you push a version number tag
+name: Publish to GitHub Packages, create GitHub Release
+on:
+  push:
+    tags:
+      # filter to tags that look like a version
+      # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-including-branches-and-tags
+      - 'v[0-9]*'
+permissions:
+  contents: write # for gh-release
+  packages: write # for npm publish
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    permissions: 
+      contents: read
+      packages: write 
+    steps:
+      - uses: actions/checkout@v3
+        # since trigger is not a branch event, it will check out master
+      - uses: actions/setup-node@v3
+        # Setup .npmrc file to publish to GitHub Packages
+        with:
+          cache: 'npm'
+          node-version: '16'
+          # create .npmrc with @themaven-net:registry=https://npm.pkg.github.com/
+          scope: '@themaven-net'
+          registry-url: 'https://npm.pkg.github.com'
+      - run: npm ci
+      - run: npm test
+      - run: |
+          VERSION=$(jq <package.json .version)
+          EXPECTED_TAG=refs/tags/v$VERSION
+          if [[ "$GITHUB_REF" != "$EXPECTED_TAG" ]]; then
+            echo >&2 "Error: the pushed ref $GITHUB_REF did not match package.json $VERSION; aborting npm publish"
+            exit 2
+          fi
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release
+        uses: softprops/action-gh-release@v0.1.14
+        with:
+          generate_release_notes: true

@@ -64,3 +64,18 @@ module.exports = require('@themaven-net/eslint-config-maven/.prettierjs');
 * [eslint-plugin-node](https://www.npmjs.com/package/eslint-plugin-node): Additional ESLint's rules for Node.js.
 * [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise): Enforce best practices for JavaScript promises.
 * [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import): ESLint plugin with rules that help validate proper imports.
+
+## Developing
+
+To make a release, push a git tag with the version:
+
+```sh
+git checkout master
+npm version major|minor|patch --message '%s ...'
+git push master --follow-tags
+```
+
+The GitHub workflow
+[npm-publish.yml](./.github/workflows/npm-publish.yml)
+will then publish the npm package to GitHub Packages
+and create a GitHub Release.
