@@ -6,7 +6,7 @@
   "exports": {
     ".": "./index.js",
     "./base-tsconfig.json": "./base-tsconfig.json",
-    "./.prettierrc": "./.prettierrc",
+    "./.prettierrc": "./.prettierrc.js",
     "./*": null
   },
   "scripts": {
