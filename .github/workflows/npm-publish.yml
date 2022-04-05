@@ -28,6 +28,13 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
       - run: npm ci
       - run: npm test
+      - name: Check that master is ancestor of the tag ${{ github.event.ref }}
+        run: |
+          GITHUB_REF_SHA=$(git rev-parse "$GITHUB_REF")
+          MASTER_SHA=$(git rev-parse master)
+          if ! git merge-base --is-ancestor "$MASTER_SHA" "$GITHUB_REF_SHA"; then
+            echo >&2 "Error: The pushed tag $GITHUB_REF ($GITHUB_REF_SHA) is not contained in master ($MASTER_SHA); aborting npm publish"
+          fi
       - name: Check that version in package.json matches the tag ${{ github.event.ref }}
         run: |
           VERSION=$(jq --raw-output <package.json .version)
