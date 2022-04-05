@@ -17,6 +17,10 @@ jobs:
       packages: write 
     steps:
       - uses: actions/checkout@v3
+        with:
+          # git fetch all branches instead of just the ref, and no --depth=1
+          # required for testing that master is ancestor of tag
+          fetch-depth: 0
         # since trigger is not a branch event, it will check out master
       - uses: actions/setup-node@v3
         # Setup .npmrc file to publish to GitHub Packages
@@ -31,7 +35,7 @@ jobs:
       - name: Check that master is ancestor of the tag ${{ github.event.ref }}
         run: |
           GITHUB_REF_SHA=$(git rev-parse "$GITHUB_REF")
-          MASTER_SHA=$(git rev-parse master)
+          MASTER_SHA=$(git rev-parse origin/master)
           if ! git merge-base --is-ancestor "$MASTER_SHA" "$GITHUB_REF_SHA"; then
             echo >&2 "Error: The pushed tag $GITHUB_REF ($GITHUB_REF_SHA) is not contained in master ($MASTER_SHA); aborting npm publish"
           fi
