@@ -65,6 +65,9 @@ module.exports = require('@themaven-net/eslint-config-maven/.prettierjs');
 * [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise): Enforce best practices for JavaScript promises.
 * [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import): ESLint plugin with rules that help validate proper imports.
 
+## History
+
+See [CHANGELOG.md](./CHANGELOG.md) for changes
 ## Developing
 
 To make a release, push a git tag with the version:
