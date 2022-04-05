@@ -6,15 +6,12 @@ on:
       # filter to tags that look like a version
       # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-including-branches-and-tags
       - 'v[0-9]*'
-permissions:
-  contents: write # for gh-release
-  packages: write # for npm publish
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-20.04
     permissions: 
-      contents: read
-      packages: write 
+      contents: write # for gh-release
+      packages: write # for npm publish
     steps:
       - uses: actions/checkout@v3
         with:
