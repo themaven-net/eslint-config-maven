@@ -75,7 +75,7 @@ To make a release, push a git tag with the version:
 ```sh
 git checkout master
 npm version major|minor|patch --message '%s ...'
-git push master --follow-tags
+git push origin master --follow-tags
 ```
 
 The GitHub workflow
