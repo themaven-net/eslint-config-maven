@@ -28,11 +28,12 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
       - run: npm ci
       - run: npm test
-      - run: |
-          VERSION=$(jq <package.json .version)
+      - name: Check that version in package.json matches the tag ${{ github.event.ref }}
+        run: |
+          VERSION=$(jq --raw-output <package.json .version)
           EXPECTED_TAG=refs/tags/v$VERSION
           if [[ "$GITHUB_REF" != "$EXPECTED_TAG" ]]; then
-            echo >&2 "Error: the pushed ref $GITHUB_REF did not match package.json $VERSION; aborting npm publish"
+            echo >&2 "Error: the pushed tag $GITHUB_REF did not match package.json $VERSION; aborting npm publish"
             exit 2
           fi
       - run: npm publish
