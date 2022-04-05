@@ -39,7 +39,7 @@ npm install --save-dev eslint @themaven-net/eslint-config-maven
 
 If you've installed `@themaven-net/eslint-config-maven` locally within your project, just set your `.eslintrc.js` config to:
 
-```json
+```js
 module.exports = {
   extends: '@themaven-net/maven' // requires '@themaven-net/eslint-config-maven'
 };
