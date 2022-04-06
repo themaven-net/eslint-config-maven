@@ -1,6 +1,6 @@
 {
   "name": "@themaven-net/eslint-config-maven",
-  "version": "10.0.1",
+  "version": "10.0.2",
   "description": "TheMaven's eslint config",
   "main": "./index.js",
   "exports": {
