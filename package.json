@@ -1,6 +1,6 @@
 {
   "name": "@themaven-net/eslint-config-maven",
-  "version": "10.0.2",
+  "version": "10.0.3",
   "description": "TheMaven's eslint config",
   "main": "./index.js",
   "exports": {
@@ -29,7 +29,7 @@
   "homepage": "https://github.com/themaven-net/eslint-config-maven#readme",
   "dependencies": {
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-promise": "^4.3.1",
