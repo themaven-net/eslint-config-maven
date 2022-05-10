@@ -16,6 +16,7 @@ module.exports = {
         'import/first': 'error',
         'import/newline-after-import': 'error',
         'import/no-duplicates': 'error',
+        eqeqeq: ['error', 'always', { null: 'ignore' }],
     },
     overrides: [
         // add no-op overrides as an alternative to passing --ext in the CLI
@@ -43,6 +44,9 @@ module.exports = {
                 // disable require-await because it is common for methods
                 // to be async to satisfy an interface even if they do not await
                 '@typescript-eslint/require-await': 'off',
+                '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+                '@typescript-eslint/strict-boolean-expressions': 'error',
+                '@typescript-eslint/no-base-to-string': 'error',
             },
         },
     ],
