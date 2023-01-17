@@ -22,13 +22,13 @@ jobs:
       - uses: actions/setup-node@v3
         # Setup .npmrc file to publish to GitHub Packages
         with:
-          cache: 'npm'
+          cache: 'yarn'
           node-version: '16'
           # create .npmrc with @themaven-net:registry=https://npm.pkg.github.com/
           scope: '@themaven-net'
           registry-url: 'https://npm.pkg.github.com'
-      - run: npm ci
-      - run: npm test
+      - run: yarn install --frozen-lockfile
+      - run: yarn test
       - name: Check that master is ancestor of the tag ${{ github.event.ref }}
         run: |
           GITHUB_REF_SHA=$(git rev-parse "$GITHUB_REF")
@@ -44,7 +44,7 @@ jobs:
             echo >&2 "Error: the pushed tag $GITHUB_REF did not match package.json $VERSION; aborting npm publish"
             exit 2
           fi
-      - run: npm publish
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Release
