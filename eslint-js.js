@@ -53,6 +53,6 @@ module.exports = {
         'no-path-concat': 'off',
         'no-throw-literal': 'off', // TODO should probably be on, with our errors fixed
         'no-template-curly-in-string': 'off',
-        yoda: 'off',
+        yoda: ['error', 'never', { onlyEquality: true }],
     },
 };
