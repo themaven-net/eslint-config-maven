@@ -8,22 +8,22 @@ on:
       - 'v[0-9]*'
 jobs:
   publish:
-    runs-on: ubuntu-20.04
-    permissions: 
+    runs-on: ubuntu-latest
+    permissions:
       contents: write # for gh-release
       packages: write # for npm publish
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # git fetch all branches instead of just the ref, and no --depth=1
           # required for testing that master is ancestor of tag
           fetch-depth: 0
         # since trigger is not a branch event, it will check out master
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         # Setup .npmrc file to publish to GitHub Packages
         with:
           cache: 'yarn'
-          node-version: '16'
+          node-version: '24'
           # create .npmrc with @themaven-net:registry=https://npm.pkg.github.com/
           scope: '@themaven-net'
           registry-url: 'https://npm.pkg.github.com'
@@ -48,6 +48,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Release
-        uses: softprops/action-gh-release@v0.1.14
+        uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
