@@ -1,13 +1,10 @@
-module.exports = {
-    extends: ['./eslint-js.js'],
-    overrides: [
-        // add no-op overrides as an alternative to passing --ext in the CLI
-        {
-            files: ['*.cjs', '*.mjs', '*.jsx'],
-        },
-        {
-            files: ['*.ts', '*.tsx'],
-            extends: ['./eslint-ts.js'],
-        },
-    ],
-};
+import eslintJs from './eslint-js.js';
+import eslintTs from './eslint-ts.js';
+
+export default [
+    ...eslintJs,
+    ...eslintTs.map((config) => ({
+        ...config,
+        files: ['**/*.ts', '**/*.tsx'],
+    })),
+];
