@@ -1,53 +1,64 @@
-module.exports = {
-    extends: ['./eslint-js.js', 'eslint:recommended', 'plugin:jest/recommended'],
-    plugins: ['jest', 'simple-import-sort', 'import'],
-    rules: {
-        'no-unused-vars': [
-            'warn',
-            {
-                argsIgnorePattern: '^_',
-                varsIgnorePattern: '^_',
-                caughtErrorsIgnorePattern: '^_',
-            },
-        ],
+import js from '@eslint/js';
+import jest from 'eslint-plugin-jest';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import importX from 'eslint-plugin-import-x';
+import tseslint from 'typescript-eslint';
+import eslintJs from './eslint-js.js';
+import eslintTs from './eslint-ts.js';
 
-        'simple-import-sort/imports': 'error',
-        'simple-import-sort/exports': 'error',
-        'import/first': 'error',
-        'import/newline-after-import': 'error',
-        'import/no-duplicates': 'error',
-        eqeqeq: ['error', 'always', { null: 'ignore' }],
-    },
-    overrides: [
-        // add no-op overrides as an alternative to passing --ext in the CLI
-        {
-            files: ['*.cjs', '*.mjs', '*.jsx'],
+export default [
+    ...eslintJs,
+    js.configs.recommended,
+    jest.configs['flat/recommended'],
+    {
+        plugins: {
+            'simple-import-sort': simpleImportSort,
+            import: importX,
         },
-        {
-            files: ['*.ts', '*.tsx'],
-            extends: [
-                './eslint-ts.js',
-                'plugin:@typescript-eslint/recommended',
-                'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        rules: {
+            'no-unused-vars': [
+                'warn',
+                {
+                    argsIgnorePattern: '^_',
+                    varsIgnorePattern: '^_',
+                    caughtErrorsIgnorePattern: '^_',
+                },
             ],
-            plugins: [],
-            rules: {
-                '@typescript-eslint/consistent-type-imports': 'warn',
-                '@typescript-eslint/no-unused-vars': [
-                    'warn',
-                    {
-                        argsIgnorePattern: '^_',
-                        varsIgnorePattern: '^_',
-                        caughtErrorsIgnorePattern: '^_',
-                    },
-                ],
-                // disable require-await because it is common for methods
-                // to be async to satisfy an interface even if they do not await
-                '@typescript-eslint/require-await': 'off',
-                '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-                '@typescript-eslint/strict-boolean-expressions': 'error',
-                '@typescript-eslint/no-base-to-string': 'error',
-            },
+
+            'simple-import-sort/imports': 'error',
+            'simple-import-sort/exports': 'error',
+            'import/first': 'error',
+            'import/newline-after-import': 'error',
+            'import/no-duplicates': 'error',
+            eqeqeq: ['error', 'always', { null: 'ignore' }],
         },
-    ],
-};
+    },
+    ...eslintTs.map((config) => ({
+        ...config,
+        files: ['**/*.ts', '**/*.tsx'],
+    })),
+    ...tseslint.configs.recommendedTypeChecked.map((config) => ({
+        ...config,
+        files: ['**/*.ts', '**/*.tsx'],
+    })),
+    {
+        files: ['**/*.ts', '**/*.tsx'],
+        rules: {
+            '@typescript-eslint/consistent-type-imports': 'warn',
+            '@typescript-eslint/no-unused-vars': [
+                'warn',
+                {
+                    argsIgnorePattern: '^_',
+                    varsIgnorePattern: '^_',
+                    caughtErrorsIgnorePattern: '^_',
+                },
+            ],
+            // disable require-await because it is common for methods
+            // to be async to satisfy an interface even if they do not await
+            '@typescript-eslint/require-await': 'off',
+            '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+            '@typescript-eslint/strict-boolean-expressions': 'error',
+            '@typescript-eslint/no-base-to-string': 'error',
+        },
+    },
+];
