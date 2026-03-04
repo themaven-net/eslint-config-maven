@@ -27,8 +27,14 @@ jobs:
           # create .npmrc with @themaven-net:registry=https://npm.pkg.github.com/
           scope: '@themaven-net'
           registry-url: 'https://npm.pkg.github.com'
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: yarn install --frozen-lockfile
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: yarn test
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Check that master is ancestor of the tag ${{ github.event.ref }}
         run: |
           GITHUB_REF_SHA=$(git rev-parse "$GITHUB_REF")
