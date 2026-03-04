@@ -16,5 +16,13 @@ jobs:
         with:
           node-version: '24'
           cache: 'yarn'
+          scope: '@themaven-net'
+          registry-url: 'https://npm.pkg.github.com'
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: yarn install --frozen-lockfile
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: yarn test
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
